@@ -14,6 +14,17 @@ www.tehnik-design.com
 
 **********************************************
 
+Installation instructions:
+
+Download the plugin files.
+Extract the archive
+Copy the tehnik-bbpress-permissions folder into the wp-content\plugins
+Activate from the Dashboard
+
+When creating/editing a Forum set the permissions using “Content Permissions” section on the bottom. This plugin together with the members plugin will take care of everything else.
+
+**********************************************
+
 Version 0.2
 Restructuring of the code for easier future upgrades
 BuddyPress User Activity Filtering
