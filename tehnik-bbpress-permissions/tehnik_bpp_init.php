@@ -3,7 +3,7 @@
 Plugin Name: Tehnik BBPress Permissions
 Plugin URI: www.tehnik-design.com
 Description: Controls BBPress Forum Permissions using Wordpress Members Plugin
-Version: 0.2
+Version: 0.1
 Author: Aleksandar Adamovic - Tehnik Design
 Author URI: www.tehnik-design.com
 License: GPL2
@@ -48,7 +48,9 @@ class Tehnik_BBPress_Permissions_Load {
 	function includes() {
 
 		/* Load the plugin functions file. */
+		require_once( TEHNIKBPP_INCLUDES . 'tehnik_bpp_core.php' );
 		require_once( TEHNIKBPP_INCLUDES . 'tehnik_bpp_forum.php' );
+		require_once( TEHNIKBPP_INCLUDES . 'tehnik_bpp_forum_widgets.php' );
 		require_once( TEHNIKBPP_INCLUDES . 'tehnik_bpp_buddypress.php' );
 	}		
 }

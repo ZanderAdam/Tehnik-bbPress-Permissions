@@ -1,8 +1,9 @@
 <?php
 
-add_action('bp_has_activities','my_denied_activity_new_member', 10, 2 );
-
-function my_denied_activity_new_member( $a, $activities ) { 
+/*
+ * Filters BuddyPress activity feed to exclude bbPress posts which the user does not have permission to view
+ */
+function tehnik_filter_buddypress_activities( $a, $activities ) { 
 	//if admin we want to know
 	if ( is_site_admin() )
 		return $activities;
@@ -18,10 +19,8 @@ function my_denied_activity_new_member( $a, $activities ) {
 			{
 				$post_id =  bbp_get_topic_forum_id($post_id);
 			}
-			
-			$user_id = wp_get_current_user()->ID;
 				
-			if(!members_can_user_view_post($user_id, $post_id))
+			if(!tehnik_bpp_can_user_view_post_id($post_id))
 			{
 				unset( $activities->activities[$key] );			 
 				$activities->activity_count = $activities->activity_count-1;
@@ -37,5 +36,7 @@ function my_denied_activity_new_member( $a, $activities ) {
 	 
 	return $activities;
 }
+
+add_action('bp_has_activities','tehnik_filter_buddypress_activities', 10, 2 );
 
 ?>
