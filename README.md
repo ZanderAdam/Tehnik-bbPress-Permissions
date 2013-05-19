@@ -2,7 +2,7 @@
 
 Contributors: Aleksandar Adamovic (Ezakiel).
 Tested on: Wordpress 3.5.
-Current Version: 0.2.
+Current Version: 0.3.
 
 Wordpress plugin which allows permission control over bbPress Forums. 
 This plugin is based on Wordpress Members plugin and extends the functionality to bbPress forums.
@@ -27,6 +27,12 @@ Activate from the Dashboard
 When creating/editing a Forum set the permissions using “Content Permissions” section on the bottom. This plugin together with the members plugin will take care of everything else.
 
 **********************************************
+
+**********************************************
+Version 0.3
+Further restructuring of code for easier maintenance
+Filtering of bbPress Widgets (custom widgets)
+Filtering of bbPress Topic Lists
 
 Version 0.2
 Restructuring of the code for easier future upgrades
