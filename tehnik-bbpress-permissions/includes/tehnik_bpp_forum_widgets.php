@@ -126,6 +126,7 @@ class Tehnik_BBP_Forums_Widget extends WP_Widget {
             return;
         }
 
+		echo $args['before_widget'];
         if (!empty($settings['title'])) {
             echo $args['before_title'] . $settings['title'] . $args['after_title'];
         }
@@ -984,4 +985,4 @@ function tehnik_bbp_has_topics($args = '') {
     return  array($bbp->topic_query->have_posts(), $bbp->topic_query);
 }
 
-add_filter('bbp_has_topics', 'tehnik_bbp_has_topics', 1, 2);
+//add_filter('bbp_has_topics', 'tehnik_bbp_has_topics', 1, 2);

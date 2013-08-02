@@ -62,30 +62,6 @@ function tehnik_bpp_get_forum_id_from_post_id($post_id, $post_type) {
 }
 
 /**
- * Use the given query to determine which forums the user has access to.
- * 
- * returns: an array of forum objects which user has permission to access
- */
-function tehnik_bpp_get_permitted_forums($forum_query) {
-
-    if (function_exists('members_can_user_view_forum')) {
-        $filtered_forums = array();
-
-        foreach ($forum_query as $forum) {
-            $forum_id = $forum->ID;
-
-            if (tehnik_bpp_can_user_view_forum_id($forum_id)) {
-                array_push($filtered_forums, $forum);
-            }
-        }
-
-        return (array) $filtered_forums;
-    }
-
-    return false;
-}
-
-/**
  * Use the given query to determine which forums the user has access to. 
  * 
  * returns: an array of forum IDs which user has access to.

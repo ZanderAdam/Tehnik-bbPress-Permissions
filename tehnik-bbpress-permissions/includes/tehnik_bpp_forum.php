@@ -40,14 +40,43 @@ function tehnik_bpp_filter_forums_by_permissions($args = '') {
 
     return apply_filters('bpp_filter_forums_by_permissions', $bbp->forum_query->have_posts(), $bbp->forum_query);
 }
+	
+/**
+ * Use the given query to determine which forums the user has access to. 
+ * Return an array of forums which user has permission to access
+ */
+function tehnik_bpp_get_permitted_forums($forum_list)
+{
+	if(function_exists('members_can_user_view_post'))
+	{
+		$filtered_forums = array();
+		
+		//Get Current User ID
+		$user_id = wp_get_current_user()->ID;
+	
+		foreach ($forum_list as $forum) 
+		{
+			$forum_id = $forum->ID;
+			
+			if(members_can_user_view_post($user_id, $forum_id))
+			{
+				array_push($filtered_forums, $forum);
+			}
+		}
+		
+		return (array) $filtered_forums;
+	}
+	
+	return true;
+}
 
 /**
  * This function filters the list of subforums based on the users rank as set by the Mebmers plugin
  */
 function tehnik_bpp_get_permitted_subforums($sub_forums = '') {
     $filtered_sub_forums = tehnik_bpp_get_permitted_forums($sub_forums);
-
-    if (empty($filtered_sub_forums)) {
+	
+    if (empty($filtered_sub_forums)) {	
         return (array) $sub_forums;
     }
 
