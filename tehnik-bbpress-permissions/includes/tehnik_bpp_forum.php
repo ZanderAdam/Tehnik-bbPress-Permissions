@@ -88,6 +88,10 @@ function tehnik_bpp_get_permitted_subforums($sub_forums = '') {
  * Show a 404 error if the user does not have a permission to access the content
  */
 function tehnik_bpp_enforce_permissions() {
+    // Bail if not viewing a bbPress item
+    if (!is_bbpress())
+        return;
+
     // Bail if not viewing a single item or if user has caps
     if (!is_singular() || bbp_is_user_keymaster() || current_user_can('read_hidden_forums'))
         return;
