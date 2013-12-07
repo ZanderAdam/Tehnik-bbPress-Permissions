@@ -97,7 +97,12 @@ function tehnik_bpp_enforce_permissions() {
         return;
 
     if (!tehnik_bpp_can_user_view_post()) {
-        bbp_set_404();
+        if (!is_user_logged_in()) {
+            auth_redirect();
+        }
+        else {
+            bbp_set_404();
+        }
     }
 }
 
